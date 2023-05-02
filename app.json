@@ -3,8 +3,19 @@
     "name": "articles-app",
     "slug": "articles-app",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "dev.nitishxyz.articlesapp"
+    },
+    "ios": {
+      "bundleIdentifier": "dev.nitishxyz.articlesapp"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cc4278c7-84d4-414a-b4a8-00262fbcd523"
+      }
+    },
+    "owner": "nitishxyz",
+    "scheme": "articlesapp"
   }
 }
