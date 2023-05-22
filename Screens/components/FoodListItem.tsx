@@ -1,20 +1,21 @@
 import { Image } from "expo-image";
-import React from "react";
+import React, { useMemo } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import TestImage from "../../Images/food_test.jpeg";
+
 import { Link } from "expo-router";
 
-const FoodListItem = () => {
+const FoodListItem = ({ data }) => {
   return (
     <View style={styles.itemContainer}>
-      <Image source={TestImage} style={styles.image} contentFit="cover" />
+      <Image
+        source={{ uri: data.image }}
+        style={styles.image}
+        contentFit="cover"
+      />
       <View style={styles.content}>
-        <Text style={styles.title}>KFC Chicken Bucket</Text>
-        <Text style={styles.description}>
-          Chizza, a recent addition to the KFC menu, is a favorite among those
-          who enjoy both pizza and poultry. It is a crunchy chicken breast
-        </Text>
-        <Text style={styles.countText}>⭐️ (45)</Text>
+        <Text style={styles.title}>{data.name}</Text>
+        <Text style={styles.description}>{data.description}</Text>
+        <Text style={styles.countText}>⭐️ ({data.numberOfReviews})</Text>
         <Link href={"/review"} asChild>
           <Pressable style={styles.reviewButton}>
             <Text style={styles.buttonText}>Review your order</Text>
