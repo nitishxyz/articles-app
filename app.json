@@ -5,10 +5,12 @@
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
     "android": {
-      "package": "dev.nitishxyz.articlesapp"
+      "package": "dev.nitishxyz.articlesapp",
+      "googleServicesFile": "./credentials/google-services.json"
     },
     "ios": {
-      "bundleIdentifier": "dev.nitishxyz.articlesapp"
+      "bundleIdentifier": "dev.nitishxyz.articlesapp",
+      "googleServicesFile": "./credentials/GoogleService-Info.plist"
     },
     "extra": {
       "eas": {
@@ -16,6 +18,7 @@
       }
     },
     "owner": "nitishxyz",
-    "scheme": "articlesapp"
+    "scheme": "articlesapp",
+    "plugins": ["@react-native-firebase/app"]
   }
 }
