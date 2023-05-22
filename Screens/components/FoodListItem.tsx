@@ -1,10 +1,11 @@
 import { Image } from "expo-image";
-import React, { useMemo } from "react";
+import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-
-import { Link } from "expo-router";
+import { Rating } from "react-native-ratings";
+import { useRouter } from "expo-router";
 
 const FoodListItem = ({ data }) => {
+  const router = useRouter();
   return (
     <View style={styles.itemContainer}>
       <Image
@@ -15,12 +16,19 @@ const FoodListItem = ({ data }) => {
       <View style={styles.content}>
         <Text style={styles.title}>{data.name}</Text>
         <Text style={styles.description}>{data.description}</Text>
-        <Text style={styles.countText}>⭐️ ({data.numberOfReviews})</Text>
-        <Link href={"/review"} asChild>
-          <Pressable style={styles.reviewButton}>
-            <Text style={styles.buttonText}>Review your order</Text>
-          </Pressable>
-        </Link>
+        <View style={styles.reviewContainer} pointerEvents="none">
+          <Rating imageSize={10} startingValue={data.rating} />
+          <Text style={styles.countText}> ({data.numberOfReviews})</Text>
+        </View>
+
+        <Pressable
+          style={styles.reviewButton}
+          onPress={() => {
+            router.push(`/review/${data.id}`);
+          }}
+        >
+          <Text style={styles.buttonText}>Review your order</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -70,6 +78,9 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "400",
     marginBottom: 10,
+  },
+  reviewContainer: {
+    flexDirection: "row",
   },
 });
 
