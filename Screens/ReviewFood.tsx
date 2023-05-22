@@ -4,10 +4,12 @@ import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { Text, View } from "react-native";
 import TestImage from "../Images/food_test.jpeg";
 import { Image } from "expo-image";
-import { AirbnbRating, Rating } from "react-native-ratings";
+import { Rating } from "react-native-ratings";
 
 const ReviewFood = () => {
   const [feedback, setFeedback] = React.useState("");
+  const [images, setImages] = React.useState([TestImage]);
+
   return (
     <View style={styles.container}>
       <View style={styles.flex}>
@@ -31,24 +33,22 @@ const ReviewFood = () => {
         />
         <Rating showRating />
         <View style={styles.imagesContainer}>
-          <View style={styles.imageBox}></View>
-          <View style={styles.imageBox}>
-            <Image source={TestImage} style={styles.flex} contentFit="cover" />
-          </View>
-          <View style={styles.imageBox}>
-            <Image source={TestImage} style={styles.flex} contentFit="cover" />
-          </View>
-        </View>
-        <View style={styles.imagesContainer}>
-          <View style={styles.imageBox}>
-            <Image source={TestImage} style={styles.flex} contentFit="cover" />
-          </View>
-          <View style={styles.imageBox}>
-            <Image source={TestImage} style={styles.flex} contentFit="cover" />
-          </View>
-          <View style={styles.imageBox}>
-            <Image source={TestImage} style={styles.flex} contentFit="cover" />
-          </View>
+          {images.map((image) => (
+            <View style={styles.imageBox}>
+              <Image
+                source={TestImage}
+                style={styles.flex}
+                contentFit="cover"
+              />
+            </View>
+          ))}
+          {images?.length < 3 ? (
+            <View style={styles.imageBox}>
+              <TouchableOpacity style={styles.addImageButton}>
+                <Text>Add</Text>
+              </TouchableOpacity>
+            </View>
+          ) : null}
         </View>
       </View>
       <TouchableOpacity style={styles.submitButton}>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     padding: 10,
-    paddingTop: 15,
+    paddingTop: 20,
   },
   foodContainer: {
     flexDirection: "row",
@@ -95,23 +95,24 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 120,
     marginTop: 20,
-    marginBottom: 10,
+    marginBottom: 20,
   },
   imagesContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 20,
+    marginTop: 30,
+    justifyContent: "center",
   },
   imageBox: {
     width: "30%",
     height: 100,
     borderWidth: 1,
     borderColor: "grey",
+    marginRight: 10,
   },
   flex: { flex: 1 },
   submitButton: {
     width: "100%",
-    paddingVertical: 15,
+    paddingVertical: 20,
     borderWidth: 1,
     borderColor: "grey",
     alignItems: "center",
@@ -122,6 +123,12 @@ const styles = StyleSheet.create({
   submitText: {
     fontSize: 15,
     fontWeight: "600",
+  },
+  addImageButton: {
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
