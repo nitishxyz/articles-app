@@ -1,28 +1,21 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import Home from "../Screens/Home";
 
 export default function App() {
   return (
     <>
       <Stack.Screen
         options={{
-          title: "Home",
+          title: "Food Items",
         }}
       />
-      <View style={styles.container}>
-        <Text>This is where the list of food items will live.</Text>
-        <StatusBar style="auto" />
-      </View>
+      <Home />
     </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  container: {},
 });
