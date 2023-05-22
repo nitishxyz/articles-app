@@ -2,16 +2,16 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
-export default function App() {
+export default function Review() {
   return (
     <>
       <Stack.Screen
         options={{
-          title: "Home",
+          title: "Add Review",
         }}
       />
       <View style={styles.container}>
-        <Text>This is where the list of food items will live.</Text>
+        <Text>This is where you can review the food item.</Text>
         <StatusBar style="auto" />
       </View>
     </>
