@@ -1,6 +1,6 @@
 import { Stack, usePathname, useRouter } from "expo-router";
 import { ActivityIndicator, Alert, StyleSheet, Text, View } from "react-native";
-import ReviewFood from "../../screens/ReviewFood";
+import ReviewFood from "@screens/ReviewFood";
 import { useEffect, useState } from "react";
 import firestore from "@react-native-firebase/firestore";
 
