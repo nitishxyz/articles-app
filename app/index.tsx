@@ -1,17 +1,17 @@
 import { Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import Home from "@screens/Home";
+
+import { StyleSheet } from "react-native";
+import ScreenCapture from "../screens/ScreenCapture";
 
 export default function App() {
   return (
     <>
       <Stack.Screen
         options={{
-          title: "Food Items",
+          title: "Screen Capture",
         }}
       />
-      <Home />
+      <ScreenCapture />
     </>
   );
 }
